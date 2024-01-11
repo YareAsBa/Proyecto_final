@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="src/public/js/olvid_contraseña.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olvidaste tu Contraseña</title>
+    <link rel="stylesheet" href="css/Proyecto.css">
+    <style>
+        /* Estilos para el enlace de "Volver a Inicio de Sesión" */
+        .return-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-title h2 {
+            font-size: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1 class="Titulo">Bienvenidos</h1>
+        <form class="form" action="/forgot-passwd" method="POST">
+            <div class="form-title">
+                <h2>¿Olvidaste tu contraseña?</h2>
+            </div>
+            <label for="correo_electronico">
+                <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Formato de correo no válido. Debe ser similar a nombre@dominio.com" required>
+            </label>
+            <div class="link-container">
+                <button type="submit">Buscar</button>
+            </div>
+            {{!-- <!-- Sección para mostrar mensajes de error si es necesario -->
+            <div id="error-message" style="color: red;">
+                {{#if error}}
+                    {{error}}
+                {{/if}}
+            </div> --}}
+        </form>
+        <a class="return-link" href="login">Volver a Inicio de Sesión</a>
+    </div>
+</body>
+</html>

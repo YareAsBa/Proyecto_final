@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/Proyecto.css">
+    <style>
+        /* Estilos para el enlace de "Volver a Inicio de Sesión" */
+        .return-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Estilos para ocultar las listas de opciones por defecto */
+        .options-list {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1 class="Titulo">Bienvenidos</h1>
+        <form class="form" name="formReg" action="/register" method="POST" onsubmit="return validateForm()"> <!-- Se añade onsubmit para llamar a la función de validación -->
+            <div class="form-title">
+                <h2>Registro</h2>
+            </div>
+            <label for="username">
+                <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+            </label>
+            <label for="correo_electronico">
+                <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Formato de correo no válido. Debe ser similar a nombre@dominio.com" required>
+            </label>
+            <label for="tipoUsuario">
+                <select id="tipoUsuario" name="usertype" onchange="showOptions(this.value)" required>
+                    <option value="">Tipo de usuario</option>
+                    <option value="operativo">Operador</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </label>
+            <label for="password">
+                <input type="password" id="password" placeholder="Contraseña" name="password" required>
+            </label>
+            <label for="confirmPassword">
+                <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" name="confirmPassword" required>
+            </label>
+            
+            <button type="submit">Registrarse</button>
+        </form>
+        <a class="return-link" href="login">Volver a Inicio de Sesión</a>
+    </div>
+</body>
+</html>
