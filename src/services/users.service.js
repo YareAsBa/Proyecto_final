@@ -50,6 +50,21 @@ export const registerUser = async (userData) => {
          throw new Error("Las contraseñas no coinciden.");
       }
 
+      if (userData.password.length < 5) {
+         throw new Error("La contraseña debe tener al menos 5 caracteres.");
+      }
+   
+      if (!/^([a-zA-Z0-9_.+-]+@gmail\.com)$/.test(userData.correo_electronico)) {
+         throw new Error("El correo electrónico debe tener la terminación gmail.");
+      }
+   
+      // Validación de registro de usuario existente con el mismo nombre de usuario
+      const existingUsername = await userModel.getUserByUsername(userData.username);
+   
+      if (existingUsername.length > 0) {
+         throw new Error("El nombre de usuario ya está registrado.");
+      }
+
       // Hash para la contraseña antes de almacenarla
       const hashedPassword = createHash("md5").update(userData.password).digest("hex");
       userData.password = hashedPassword;
